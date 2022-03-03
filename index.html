@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>JS Drum Kit</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <div class="header">
+    <h1>JavaScript Drum-kit</h1>
+  </div>
+
+  <div class="keys">
+    <div data-key="65" class="key" id="a">
+      <kbd>A</kbd>
+      <span class="sound">clap</span>
+    </div>
+    <div data-key="83" class="key" id="s">
+      <kbd>S</kbd>
+      <span class="sound">hihat</span>
+    </div>
+    <div data-key="68" class="key" id="d">
+      <kbd>D</kbd>
+      <span class="sound">kick</span>
+    </div>
+    <div data-key="70" class="key" id="f">
+      <kbd>F</kbd>
+      <span class="sound">openhat</span>
+    </div>
+    <div data-key="71" class="key" id="g">
+      <kbd>G</kbd>
+      <span class="sound">boom</span>
+    </div>
+    <div data-key="72" class="key" id="h">
+      <kbd>H</kbd>
+      <span class="sound">ride</span>
+    </div>
+    <div data-key="74" class="key" id="j">
+      <kbd>J</kbd>
+      <span class="sound">snare</span>
+    </div>
+    <div data-key="75" class="key" id="k">
+      <kbd>K</kbd>
+      <span class="sound">tom</span>
+    </div>
+    <div data-key="76" class="key" id="l">
+      <kbd>L</kbd>
+      <span class="sound">tink</span>
+    </div>
+  </div>
+
+    <audio data-key="65" src="sounds/clap.wav" id="clap"></audio>
+  <audio data-key="83" src="sounds/hihat.wav" id="hihat" ></audio>
+  <audio data-key="68" src="sounds/kick.wav" id="kick"></audio>
+  <audio data-key="70" src="sounds/openhat.wav" id="openhat"></audio>
+  <audio data-key="71" src="sounds/boom.wav" id="boom"></audio>
+  <audio data-key="72" src="sounds/ride.wav" id="ride"></audio>
+  <audio data-key="74" src="sounds/snare.wav" id="snare"></audio>
+  <audio data-key="75" src="sounds/tom.wav" id="tom"></audio>
+  <audio data-key="76" src="sounds/tink.wav" id="tink"></audio>
+
+<script>
+    function playSound(e) {
+        const audio = document.querySelector(`audio[data-key="${e.keyCode}"]`);
+        const key = document.querySelector(`.key[data-key="${e.keyCode}"]`);
+        if (!audio) return; //Stop the function from running all together
+        audio.currentTime = 0;// rewinds to start
+        audio.play();
+        key.classList.add("playing")
+    }
+
+    function removeTransition(e) {
+      if(e.propertyName !==  'transform') return;
+      this.classList.remove("playing") // this right here points to key class elements 
+    }
+    const keys = document.querySelectorAll(".key")
+
+    keys.forEach(key => key.addEventListener('transitionend', removeTransition))
+    
+    window.addEventListener('keydown', playSound)
+
+    /* ======================== Click Events =============================*/
+    let a = document.getElementById("a")
+    let s = document.getElementById("s")
+    let d = document.getElementById("d")
+    let f = document.getElementById("f")
+    let g = document.getElementById("g")
+      let h = document.getElementById("h")
+      let j = document.getElementById("j")
+      let k = document.getElementById("k")
+        let l = document.getElementById("l")
+
+        a.addEventListener("click", function() {
+          let sound = document.getElementById("clap")
+          sound.currentTime = 0;// rewinds to start
+          sound.play();
+          a.classList.add("playing")
+        })
+        
+         s.addEventListener("click", function () {
+            let sound = document.getElementById("hihat")
+            sound.currentTime = 0;// rewinds to start
+            sound.play();
+            s.classList.add("playing")
+          })
+
+         d.addEventListener("click", function () {
+            let sound = document.getElementById("kick")
+            sound.currentTime = 0;// rewinds to start
+            sound.play();
+            d.classList.add("playing")
+          })
+        
+         f.addEventListener("click", function () {
+            let sound = document.getElementById("openhat")
+            sound.currentTime = 0;// rewinds to start
+            sound.play();
+            f.classList.add("playing")
+          })
+
+         g.addEventListener("click", function () {
+            let sound = document.getElementById("boom")
+            sound.currentTime = 0;// rewinds to start
+            sound.play();
+            g.classList.add("playing")
+          })
+
+         h.addEventListener("click", function () {
+            let sound = document.getElementById("ride")
+            sound.currentTime = 0;// rewinds to start
+            sound.play();
+            h.classList.add("playing")
+          })
+
+         j.addEventListener("click", function () {
+            let sound = document.getElementById("snare")
+            sound.currentTime = 0;// rewinds to start
+            sound.play();
+            j.classList.add("playing")
+          })
+
+         k.addEventListener("click", function () {
+            let sound = document.getElementById("tom")
+            sound.currentTime = 0;// rewinds to start
+            sound.play();
+            k.classList.add("playing")
+          })
+
+         l.addEventListener("click", function () {
+            let sound = document.getElementById("tink")
+            sound.currentTime = 0;// rewinds to start
+            sound.play();
+            l.classList.add("playing")
+          })
+</script>
+
+
+</body>
+</html>
