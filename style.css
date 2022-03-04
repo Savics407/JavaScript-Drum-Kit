@@ -69,7 +69,7 @@ kbd {
     min-height: 70vh;
     align-items: center;
     justify-content: center;
-    border: 1px solid wheat;
+/*     border: 1px solid wheat; */
     /* margin: 10px auto; */
   }
 
